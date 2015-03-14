@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="Utf-8" ?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/root">
+
+<page width="595" height="841" font-family="ＭＳ ゴシック">
+
+  <div border-width="0 0 1 0" font-size="16">
+    <text><xsl:value-of select="name"/></text>
+  </div>
+
+  <div height="2"/>
+  
+  <div padding="0">
+    <div border-width="0.5" align="left" width="200" background-color="#999999">
+      <text align="center" content-align="center">名前</text>
+    </div>
+    <div border-width="0.5" align="left" width="200" background-color="#999999">
+      <text align="center" content-align="center">価格</text>
+    </div>
+  </div>
+  
+  <xsl:for-each select="item">
+    <record>
+      <div padding="0">
+        <div border-width="0.5" align="left" width="200">
+          <text><xsl:value-of select="name"/></text>
+        </div>
+        <div border-width="0.5" align="left" width="200">
+          <text content-align="right"><xsl:value-of select="price"/></text>
+        </div>
+      </div>
+    </record>
+  </xsl:for-each>
+  
+</page>
+
+</xsl:template>
+</xsl:stylesheet>

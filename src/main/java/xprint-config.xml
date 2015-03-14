@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="Utf-8"?>
+<config>
+
+	<!-- スクリプトタグを有効にするかどうか -->
+	<script-enabled>true</script-enabled>
+
+	<!-- クロスドメインのリソースアクセスを許可するかどうか -->
+	<allow-cross-domain>true</allow-cross-domain>
+
+	<!-- フォントの設定 -->
+	<!-- ファミリ名をエイリアス名にマッピングします。 -->
+	<!-- <font-alias family="ファミリ名" alias="エイリアス名"/> -->
+	<!-- ファミリ名をパス(TrueTypeファイル)にマッピングします。 -->
+	<!-- <font-path family="ファミリ名" path="パス"/> -->
+	
+	<font-alias family="sans-serif" alias="HGRSMP"/>
+	<font-alias family="serif" alias="HGRSKP"/>
+	<font-alias family="hogaraka" alias="HOGARAKA"/>
+	
+	<font-path family="HGRSMP" path="/usr/local/fonts/ipagp.ttf"/>
+	<font-path family="HGRSKP" path="/usr/local/fonts/ipamp.ttf"/>
+	<font-path family="HOGARAKA" path="/usr/local/fonts/HOGARAKA.TTF"/>
+
+</config>

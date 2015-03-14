@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="Utf-8" ?>
+<address-book>
+
+  <!-- from の郵便番号はハイフン区切りとする -->
+  <from-zip-code>000-0000</from-zip-code>
+  <from-addr1>東京都○○区0-0-0</from-addr1>
+  <from-addr2>建物名000号室</from-addr2>
+  <from-name>帳票 一郎</from-name>
+
+  <address>
+    <to-zip-code>123</to-zip-code>
+    <to-addr1>東京都○○区1-1-1</to-addr1>
+    <to-addr2>建物名111号室</to-addr2>
+    <to-name>帳票 太郎</to-name>
+  </address>
+
+  <address>
+    <to-zip-code>1234567</to-zip-code>
+    <to-addr1>東京都○○区2-2-2</to-addr1>
+    <to-addr2>建物名222号室</to-addr2>
+    <to-name>帳票 次郎</to-name>
+  </address>
+
+  <address>
+    <to-zip-code>7777777</to-zip-code>
+    <to-addr1>東京都○○区3-3-3</to-addr1>
+    <to-addr2>建物名333号室</to-addr2>
+    <to-name>帳票 三郎太</to-name>
+  </address>
+
+</address-book>

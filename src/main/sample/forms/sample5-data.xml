@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="Utf-8" ?>
+<picking-list>
+
+  <id>2004090101096000</id>
+  <ship-no>01234567</ship-no>
+  <send-to>帳票 次郎</send-to>
+  <owner>帳票事業部</owner>
+  
+  <item>
+
+    <location>000001</location>
+
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+  </item>
+
+  <item>
+
+    <location>000002</location>
+
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+  </item>
+
+  <item>
+
+    <location>000003</location>
+
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+  </item>
+
+
+  <item>
+
+    <location>000004</location>
+
+    <meisai>
+      <code>1234123B</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245</code>
+    </meisai>
+    <meisai>
+      <code>1234123</code>
+    </meisai>
+
+    <meisai>
+      <code>23453245E</code>
+    </meisai>
+  </item>
+
+  <item>
+
+    <location>000005</location>
+
+    <meisai>
+      <code>3456456</code>
+    </meisai>
+
+    <meisai>
+      <code>4564577</code>
+    </meisai>
+
+    <meisai>
+      <code>5456456</code>
+    </meisai>
+
+    <meisai>
+      <code>6564577</code>
+    </meisai>
+
+  </item>
+
+
+  <item>
+
+    <location>000006</location>
+
+    <meisai>
+      <code>3456456</code>
+    </meisai>
+
+    <meisai>
+      <code>4564577</code>
+    </meisai>
+
+    <meisai>
+      <code>5456456</code>
+    </meisai>
+
+    <meisai>
+      <code>6564577</code>
+    </meisai>
+
+  </item>
+  <item>
+
+    <location>000007</location>
+
+    <meisai>
+      <code>3456456</code>
+    </meisai>
+
+    <meisai>
+      <code>4564577</code>
+    </meisai>
+
+    <meisai>
+      <code>5456456</code>
+    </meisai>
+
+    <meisai>
+      <code>6564577</code>
+    </meisai>
+
+  </item>
+  <item>
+
+    <location>000008</location>
+
+    <meisai>
+      <code>3456456</code>
+    </meisai>
+
+    <meisai>
+      <code>4564577</code>
+    </meisai>
+
+    <meisai>
+      <code>5456456</code>
+    </meisai>
+
+    <meisai>
+      <code>6564577</code>
+    </meisai>
+
+  </item>
+  <item>
+
+    <location>000009</location>
+
+    <meisai>
+      <code>3456456</code>
+    </meisai>
+
+    <meisai>
+      <code>4564577</code>
+    </meisai>
+
+    <meisai>
+      <code>5456456</code>
+    </meisai>
+
+    <meisai>
+      <code>6564577</code>
+    </meisai>
+
+  </item>
+  <item>
+
+    <location>000010</location>
+
+    <meisai>
+      <code>3456456</code>
+    </meisai>
+
+    <meisai>
+      <code>4564577</code>
+    </meisai>
+
+    <meisai>
+      <code>5456456</code>
+    </meisai>
+
+    <meisai>
+      <code>6564577</code>
+    </meisai>
+
+  </item>
+  <item>
+
+    <location>000011</location>
+
+    <meisai>
+      <code>3456456</code>
+    </meisai>
+
+    <meisai>
+      <code>4564577</code>
+    </meisai>
+
+    <meisai>
+      <code>5456456</code>
+    </meisai>
+
+    <meisai>
+      <code>6564577</code>
+    </meisai>
+
+  </item>
+  <item>
+
+    <location>000012</location>
+
+    <meisai>
+      <code>3456456</code>
+    </meisai>
+
+    <meisai>
+      <code>45P64577</code>
+    </meisai>
+
+    <meisai>
+      <code>5456456</code>
+    </meisai>
+
+    <meisai>
+      <code>6564577</code>
+    </meisai>
+
+  </item>
+
+</picking-list>

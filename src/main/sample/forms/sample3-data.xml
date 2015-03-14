@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="Utf-8" ?>
+<root>
+
+  <name>野菜 太郎</name>
+  
+  <item>
+    <name>きゅうり</name>
+    <price>\128</price>
+  </item>
+
+  <item>
+    <name>なす</name>
+    <price>\158</price>
+  </item>
+
+  <item>
+    <name>ピーマン</name>
+    <price>\78</price>
+  </item>
+  
+  <item>
+    <name>長ネギ</name>
+    <price>\198</price>
+  </item>
+
+</root>

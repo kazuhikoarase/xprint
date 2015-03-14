@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="urn:XPrint" elementFormDefault="qualified"
+	attributeFormDefault="unqualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xp="urn:XPrint">
+
+	<element name="page" type="xp:pageType" />
+
+	<complexType name="pageType">
+		<choice maxOccurs="unbounded" minOccurs="0">
+			<group ref="xp:basic-elements" />
+			<element name="header" type="xp:headerType" />
+		</choice>
+		<attributeGroup ref="xp:basic-attributes" />
+	</complexType>
+
+	<complexType name="textType">
+		<complexContent>
+			<extension base="xp:abstractTextType">
+				<attributeGroup ref="xp:basic-attributes" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="imageType">
+		<attributeGroup ref="xp:basic-attributes" />
+		<attribute name="src" type="string" />
+	</complexType>
+
+	<complexType name="scriptType">
+		<complexContent>
+			<extension base="xp:abstractTextType">
+				<attributeGroup ref="xp:basic-attributes" />
+				<attribute name="src" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="propertyType">
+		<attribute name="select" type="string" />
+	</complexType>
+
+	<complexType name="barcodeType">
+		<complexContent>
+			<extension base="xp:abstractTextType">
+				<attribute name="unit-width" type="string" />
+				<attribute name="narrow-bar-width" type="string" />
+				<attributeGroup ref="xp:basic-attributes" />
+				<attribute name="type" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="qrcodeType">
+		<complexContent>
+			<extension base="xp:abstractTextType">
+				<attribute name="unit-width" type="string" />
+				<attribute name="NewAttribute1" type="string" />
+				<attributeGroup ref="xp:basic-attributes" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="divType">
+		<choice maxOccurs="unbounded" minOccurs="0">
+			<group ref="xp:basic-elements" />
+		</choice>
+		<attributeGroup ref="xp:basic-attributes" />
+	</complexType>
+
+	<attributeGroup name="basic-attributes">
+		<attribute name="width" type="string" />
+		<attribute name="height" type="string" />
+		<attribute name="align" type="string" />
+		<attribute name="content-align" type="string" />
+		<attribute name="content-vertical-align" type="string" />
+		<attribute name="padding" type="string" />
+		<attribute name="margin" type="string" />
+		<attribute name="font-family" type="string" />
+		<attribute name="font-size" type="string" />
+		<attribute name="font-weight" type="string" />
+		<attribute name="border-width" type="string" />
+		<attribute name="stroke-cap" type="string" />
+		<attribute name="stroke-dash-pattern" type="string" />
+		<attribute name="stroke-join" type="string" />
+		<attribute name="corner-radius" type="string" />
+		<attribute name="color" type="string" />
+		<attribute name="background-color" type="string" />
+	</attributeGroup>
+
+	<complexType name="recordType">
+		<choice maxOccurs="unbounded" minOccurs="0">
+			<group ref="xp:basic-elements" />
+			<element name="header" type="xp:headerType" />
+		</choice>
+		<attributeGroup ref="xp:basic-attributes" />
+		<attribute name="page-break" type="string" />
+	</complexType>
+
+	<complexType name="headerType">
+		<choice maxOccurs="unbounded" minOccurs="0">
+			<group ref="xp:basic-elements" />
+		</choice>
+		<attributeGroup ref="xp:basic-attributes" />
+	</complexType>
+
+	<group name="basic-elements">
+		<choice>
+			<element name="text" type="xp:textType" />
+			<element name="div" type="xp:divType" />
+			<element name="record" type="xp:recordType" />
+			<element name="image" type="xp:imageType" />
+			<element name="barcode" type="xp:barcodeType" />
+			<element name="qrcode" type="xp:qrcodeType" />
+			<element name="script" type="xp:scriptType" />
+		</choice>
+	</group>
+
+	<complexType name="abstractTextType" mixed="true">
+		<sequence>
+			<element name="property" type="xp:propertyType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+</schema>

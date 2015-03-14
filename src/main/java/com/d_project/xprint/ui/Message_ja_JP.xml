@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>messages</comment>
+	<entry key="msg.confirm_overwrite">{0}を上書きしてもよろしいですか？</entry>
+	<entry key="msg.output_done">{0}を出力しました。</entry>
+</properties>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="Utf-8" ?>
+
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <xsl:template match="/root">
+    <page width="841" height="595">
+
+      <!-- 正式版 -->
+      <xsl:call-template name="document">
+      </xsl:call-template>
+
+      <!-- 控え -->
+      <xsl:call-template name="document">
+        <!-- コピーフラグ = 1 -->
+        <xsl:with-param name="copy">1</xsl:with-param>
+      </xsl:call-template>
+
+    </page>
+  </xsl:template>
+
+  <xsl:template name="document">  
+    
+    <!-- コピーフラグ(規定値:0) -->
+    <xsl:param name="copy">0</xsl:param>
+    
+      <record page-break="always">
+
+      <text>http://www.printingforless.com/CD-Cover-Size-Specifications.html</text>
+      <text>-- 120 x 120 [mm] = CD cover size</text>
+      
+      <div height="10mm"/>
+      
+      <div padding="0">
+      
+        <!-- 240mm x 120mm -->
+        <div width="240mm" height="120mm" align="left" padding="0">
+
+          <!-- 背景を塗りつぶす(少し大きめ) -->
+          <script src="assets/background-color.js" align="center"><![CDATA[
+          var args = {gap: "1mm", color: "#ffddcc"};
+          ]]></script>
+
+          <!-- トンボ(トリムマーク)を描く -->
+          <script src="assets/trim-mark.js" align="center"/>
+
+          <div padding="0" align="center">
+
+            <!-- 裏 -->
+            <div width="120mm" align="left" padding="0">
+              <div color="#ff0099" background-color="#ffffff" margin="5mm" border-width="2mm" corner-radius="10mm" align="center" padding="3mm">
+                <text font-size="8pt">ECMAScript(JavaScript)により、再利用可能な部品を作ることができます。
+
+このファイルは
+・トリムマーク(裁断位置)
+・裁断時に白地が残らないように、対象の長方形より大きめの長方形を描画
+などのサンプルです。</text>
+                <text align="bottom" color="#eeeeee" font-size="24pt">XPrint Form Sample</text>
+              </div>
+            </div>
+
+            <!-- 表 -->
+            <div width="120mm" align="left" padding="0">
+              <div color="#ff0099" background-color="#ffffff" margin="5mm" border-width="2mm" corner-radius="10mm" align="center" padding="3mm">
+                <div padding="2" height="25mm" color="#ffff00" border-width="1.5mm" corner-radius="7mm">
+
+                  <!-- ランダムな枠 -->
+                  <script src="assets/random-border.js" align="center"/>
+
+                  <div align="center">
+                    <div align="left" width="10mm"/>
+                    <xsl:if test="not($copy='1')">
+                      <image align="left" height="20mm" src="assets/sonny-stamp.png"/>
+                    </xsl:if>
+                  </div>
+
+                  <div align="center">
+                    <div width="10mm"/>
+                    <div padding="0" font-size="20pt" font-weight="bold">
+                      <text align="left"><xsl:value-of select="@title"/></text>
+                      <xsl:if test="$copy='1'">
+                        <text align="left"> (控)</text>
+                      </xsl:if>
+                    </div>
+                    <text>visit <xsl:value-of select="@url"/></text>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- カスタムグラフィックス -->
+              <script src="sample7-form.js" align="center"/>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div height="20mm"/>
+
+      <text>正確なサイズで印刷するためには、PDF の印刷ダイアログの「ページの処理 - ページの拡大 / 縮小」 で「なし」を選択します。</text>
+      <text>トリムマークに定規を当てて切り取ると、CDカバーとして使用できます。</text>
+
+    </record>
+
+  </xsl:template>
+
+</xsl:stylesheet>

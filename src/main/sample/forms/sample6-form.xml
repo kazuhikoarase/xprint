@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="Utf-8" ?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <xsl:template match="/root">
+    <page width="595" height="841" font-family="ＭＳ Ｐゴシック">
+
+      <text>点線を引く</text>
+
+      <div height="20pt"/>
+
+      <div border-width="0 0 1 1" stroke-dash-pattern="2 2" stroke-cap="butt">
+        <text>stroke-cap="butt"</text>
+      </div>
+      <div height="10pt"/>
+      <div border-width="0 0 1 1" stroke-dash-pattern="2 2" stroke-cap="round">
+        <text>stroke-cap="round"</text>
+      </div>
+      <div height="10pt"/>
+      <div border-width="0 0 1 1" stroke-dash-pattern="2 2" stroke-cap="square">
+        <text>stroke-cap="square" (default)</text>
+      </div>
+
+      <div height="20pt"/>
+
+      <div border-width="1" stroke-join="miter">
+        <text>stroke-join="miter" (default)</text>
+      </div>
+      <div height="10pt"/>
+      <div border-width="1" stroke-join="round">
+        <text>stroke-join="round"</text>
+      </div>
+      <div height="10pt"/>
+      <div border-width="1" stroke-join="bevel">
+        <text>stroke-join="bevel"</text>
+      </div>
+
+      <div height="20pt"/>
+
+      <div border-width="1" stroke-dash-pattern="8 2 2 2" stroke-cap="butt" corner-radius="4pt">
+        <text>PATTERN</text>
+      </div>
+
+      <div height="20pt"/>
+
+      <div border-width="1 1 1 1 0.5 0.5">
+        <text>対角線</text>
+      </div>
+
+    </page>
+  </xsl:template>
+
+</xsl:stylesheet>

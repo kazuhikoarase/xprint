@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="Utf-8" ?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="/root">
+    <page width="200mm" height="200mm" padding="0" font-size="12pt" font-family="serif">
+      <script src="sample9-form.js">印刷するよ。印刷するよ。印刷するよ。印刷するよ。印刷するよ。印刷するよ。印刷するよ。印刷するよ。印刷するよ。印刷するよ。印刷するよ。印刷するよ。印刷するよ。印刷するよ。</script>
+    </page>
+  </xsl:template>
+</xsl:stylesheet>

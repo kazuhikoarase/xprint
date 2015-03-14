@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="Utf-8" ?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/picking-list">
+
+<page width="595" height="841" font-family="ＭＳ Ｐゴシック">
+
+  <div padding="0">
+  
+    <div padding="0" align="left" width="150">
+    </div>
+    <div padding="0" align="center">
+      <div>
+        <text content-align="center" font-size="16">個口ピッキングリスト</text>
+      </div>
+    </div>
+    <div padding="0" align="right" width="150">
+      <div>
+        <text>発行日: 2004/03/03  10:00:00</text>
+      </div>
+    </div>
+
+  </div>
+
+  <div height="5"/>
+
+  <div padding="0">
+
+    <div padding="0" align="left" width="200">
+      <div>
+        <text align="left" width="30">荷主:</text>
+        <text align="left">
+          <xsl:value-of select="owner"/>
+        </text>
+      </div>
+    </div>
+
+    <div padding="0" align="center">
+      <div>
+        <text align="left" width="50">締No:</text>
+        <text align="left">220</text>
+      </div>
+    </div>
+
+    <div padding="0" align="right" width="150">
+      <div>
+        <text align="left" width="50">内部締No:</text>
+        <text align="left">0090120</text>
+      </div>
+    </div>
+
+  </div>
+
+  <div height="5"/>
+
+
+  <div padding="0">
+
+    <div padding="0" align="left">
+      <div>
+        <text align="left" width="40">作業日:</text>
+        <text align="left">2004/10/01</text>
+      </div>
+    </div>
+
+    <div padding="0" align="right" width="200">
+      <div border-width="1.5">
+        <text>ピッキングリストID:<xsl:value-of select="id"/></text>
+      </div>
+    </div>
+
+  </div>
+
+  <div height="5" />  
+
+  <div padding="0">
+
+    <div padding="0" align="left">
+
+      <div height="20"/>
+
+      <div>
+        <text>出荷伝票No: 002834236</text>
+      </div>
+      <div>
+        <text>出荷依頼伝票No: 0342407430</text>
+      </div>
+
+    </div>
+
+    <div padding="0" align="right">
+      <barcode type="CODE39" narrow-bar-width="0.6" content-align="center"><xsl:value-of select="id"/></barcode>
+      <text content-align="center">*<xsl:value-of select="id"/>*</text>
+      <text content-align="right" font-size="12">[個出庫]</text>
+    </div>
+
+  </div>
+  
+  <div padding="0">
+
+    <div padding="0" align="left">
+
+      <div>
+        <text align="left" width="200">配送業者: 黒猫特急便</text>
+        <text align="left" width="100">代引き有り</text>
+        <text align="left" width="100">元払</text>
+      </div>
+
+      <div>
+        <text align="left" font-size="12">届先：</text>
+        <div align="left" border-width="1" width="350">
+          <text font-size="14">
+            <xsl:value-of select="send-to"/>
+          </text>
+        </div>
+      </div>
+
+      <div>
+        <text align="left" width="200">配達日指定:</text>
+        <text align="left" width="150">配達指定時間帯: ＮＴ</text>
+        <text align="left" width="150">曜日指定: 無し</text>
+      </div>
+
+    </div>
+  </div>
+  <div padding="0">
+
+    <div padding="0" align="left">
+      <div height="20"/>
+      <div>
+        <text>備考</text>
+      </div>
+    </div>
+    <div padding="0" align="right">
+      <div>
+        <text align="left">合計換算重量</text>
+        <div align="center" width="10"/>
+        <text align="right">7.05Kg</text>
+      </div>
+      <div>
+        <text align="left">合計実重量</text>
+        <div align="center" width="10"/>
+        <text align="right">2.02Kg</text>
+      </div>
+    </div>
+   
+  </div>
+  
+  <div>
+
+    <div align="left" width="160"/>
+
+    <div align="center">
+      <text align="bottom" content-align="center"
+        content-vertical-align="center"
+        color="#ffffff" background-color="#000000"
+        font-size="14" xfont-weight="bold">明細シール貼り付けのこと</text>
+    </div>
+
+    <div align="right" width="160">
+
+      <div align="right" padding="0">
+        <div border-width="1">
+          <text content-align="center">2F-P</text>
+        </div>
+        <div border-width="1" width="40" height="36"/>
+      </div>
+
+      <div align="right" padding="0">
+        <div border-width="1">
+          <text content-align="center">1F-P</text>
+        </div>
+        <div border-width="1" width="40" height="36"/>
+      </div>
+
+      <div align="right" padding="0">
+        <div border-width="1">
+          <text content-align="center">検品</text>
+        </div>
+        <div border-width="1" width="40" height="36"/>
+      </div>
+
+    </div>
+
+  </div>
+  
+  <header>
+
+    <div>
+      <text>＜ピッキング商品明細＞</text>
+    </div>  
+
+    <div background-color="#999999" border-width="0.5 0 0 0" padding="0" font-size="11">
+      <div align="left" width="20">
+        <text>No</text>
+      </div>
+      <div align="left" width="140">
+        <text>ロケーション</text>
+      </div>
+      <div align="left">
+        <text>商品名</text>
+        <div height="2"/>
+        <text>商品コード</text>
+      </div>
+      <div align="right">
+        <text>数量</text>
+      </div>
+    </div>  
+
+    <div background-color="#999999" border-width="0.5 0 0 0" padding="0">
+      <div align="left" width="40"/>
+      <div align="left" width="20">
+        <text>No</text>
+      </div>
+      <div align="left" width="30">
+        <text>区分</text>
+      </div>
+      <div align="left" width="70">
+        <text>コード</text>
+      </div>
+      <div align="left" width="220">
+        <text>流通加工名</text>
+      </div>
+      <div align="left">
+        <text>ロケーション</text>
+      </div>
+      <div align="right">
+        <text>数量</text>
+      </div>
+    </div>
+
+  </header>
+
+  <header align="bottom">
+    <text content-align="center">Page <property select="page-no"/> of <property select="page-count"/></text>
+  </header>
+
+  <xsl:for-each select="item">
+
+    <record xpage-break="auto">
+
+      <header>
+
+        <div border-width="0.5 0 0 0" padding="0" font-size="11">
+
+          <div align="left" width="20">
+            <text content-align="right"><xsl:value-of select="position()"/></text>
+          </div>
+          <div align="left" width="140">
+            <text><xsl:value-of select="location"/></text>
+<!--
+            <barcode type="ITF"><xsl:value-of select="location"/></barcode>
+-->
+          </div>
+          <div align="left">
+            <text>*</text>
+            <div height="2"/>
+            <text>*</text>
+          </div>
+          <div align="right">
+            <text>*</text>
+          </div>
+
+        </div>  
+
+      </header>
+
+      <xsl:for-each select="meisai">
+
+        <record>
+
+          <div padding="0">
+
+            <div align="left" width="40"/>
+
+            <div align="center" border-width="0.5 0 0 0" padding="0">
+              <div align="left" width="20">
+                <text content-align="right"><xsl:value-of select="position()"/></text>
+              </div>
+              <div align="left" width="30">
+                <text>*</text>
+              </div>
+              <div align="left" width="70">
+                <text><xsl:value-of select="code"/></text>
+              </div>
+              <div align="left" width="220">
+                <text>*</text>
+              </div>
+              <div align="left">
+                <text>*</text>
+              </div>
+              <div align="right">
+                <text>*</text>
+              </div>
+            </div>
+
+          </div>
+
+        </record>
+
+      </xsl:for-each>
+
+    </record>
+
+  </xsl:for-each>
+
+</page>
+
+</xsl:template>
+</xsl:stylesheet>
+

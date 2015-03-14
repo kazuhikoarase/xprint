@@ -1,0 +1,99 @@
+<project default="all">
+
+	<property environment="env" />
+	<property name="FLEX_HOME" value="${env.FLEX_HOME}"/>
+
+	<property name="lib" location="../lib"/>
+
+	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+
+	<target name="all" depends="compile.flash" />
+
+	<target name="clean">
+		<delete>
+			<fileset dir="${basedir}">
+				<include name="*.swf"/>
+				<include name="*.js"/>
+				<include name="*.html"/>
+				<include name="*.class"/>
+			</fileset>
+		</delete>
+		<delete dir="out"/>
+	</target>
+	
+	<target name="compile.java">
+	
+		<echo message="${java.version}"/>
+		
+		<javac srcdir="." includeantruntime="false">
+			<classpath>
+         		<fileset dir="${lib}">
+         			<include name="*.jar"/>
+         		</fileset>
+			</classpath>
+		</javac>
+
+	</target>
+
+	<target name="execute.java" depends="compile.java">
+	
+		<java classname="Sample1" fork="true">
+			<classpath>
+				<pathelement location="${basedir}"/>
+				<fileset dir="${lib}">
+         			<include name="*.jar"/>
+         		</fileset>
+			</classpath>
+		</java>
+
+	</target>
+
+	<target name="compile.flash" depends="execute.java">
+	
+		<antcall target="compile.flash.impl">
+			<param name="target.name" value="Sample1"/>
+			<param name="target.mainfile" value="Sample1.as"/>
+		</antcall>
+
+		<antcall target="compile.flash.impl">
+			<param name="target.name" value="Sample2"/>
+			<param name="target.mainfile" value="Sample2.mxml"/>
+		</antcall>
+
+	</target>
+		
+	<target name="compile.flash.impl">
+
+		<mxmlc 
+			benchmark="true"
+			use-network="false"
+			target-player="10.0.0"
+			file="${basedir}/${target.mainfile}"
+			output="${basedir}/${target.name}.swf"
+		>
+			<compiler.include-libraries dir="${lib}" append="true">
+			    <include name="xprint.swc"/>
+			</compiler.include-libraries>
+			<default-background-color>#ffffff</default-background-color>
+			<default-size width="550" height="400"/>
+			<static-link-runtime-shared-libraries>true</static-link-runtime-shared-libraries>
+		</mxmlc>
+
+		<html-wrapper
+			title="${target.name}"
+            file="${target.name}.html"
+            height="100%"
+            width="100%"
+            bgcolor="#ffffff"
+            application="app"
+            swf="${target.name}"
+            version-major="10"
+            version-minor="0"
+            version-revision="0"
+            history="false"
+            output="${basedir}"
+		/>
+
+	</target>
+
+</project>

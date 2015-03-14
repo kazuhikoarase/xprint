@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="Utf-8" ?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/root">
+
+<page width="595" height="841">
+
+<div>
+<text font-size="16" content-align="center">Barcode and Image</text>
+</div>
+
+<div height="20"/>
+
+<div>
+  <div align="left" width="20" height="20" background-color="#ff0000"/>
+  <div align="left" width="20" height="20" background-color="#ffcc00"/>
+  <div align="left" width="20" height="20" background-color="#ffff00"/>
+  <div align="left" width="20" height="20" background-color="#ccff00"/>
+  <div align="left" width="20" height="20" background-color="#00ff00"/>
+  <div align="left" width="20" height="20" background-color="#00ffcc"/>
+  <div align="left" width="20" height="20" background-color="#00ffff"/>
+  <div align="left" width="20" height="20" background-color="#00ccff"/>
+  <div align="left" width="20" height="20" background-color="#0000ff"/>
+  <div align="left" width="20" height="20" background-color="#ff00cc"/>
+  <div align="left" width="20" height="20" background-color="#ff00ff"/>
+</div>
+
+<div>
+    <text> XPrintを使うと、読みやすい帳票を簡単に作成することができます。
+扱うことができるのは、文字、画像、バーコードです。
+罫線は、ボックスの上下左右の枠線で表現します。</text>
+  </div>
+
+  <div align="bottom" border-width="0.5 0 0 0">
+    <text content-align="center">- example -</text>
+  </div>
+
+  <div height="20"/>
+
+  <div>
+    <text font-size="12">JAN</text>
+  </div>
+  <div>
+    <text>0123456</text>
+	<barcode type="JAN">0123456</barcode>
+    <text>7890123</text>
+	<barcode type="JAN">7890123</barcode>
+    <text>012345678901</text>
+	<barcode type="JAN">012345678901</barcode>
+  </div>
+
+  <div height="4"/>
+  
+  <div>
+    <text font-size="12">ITF</text>
+  </div>
+  <div>
+    <text>0123456789</text>
+	<barcode type="ITF">0123456789</barcode>
+  </div>
+
+  <div height="4"/>
+
+  <div>
+    <text font-size="12">CODE39</text>
+  </div>
+  <div>
+    <text>0123456789</text>
+	<barcode type="CODE39">0123456789</barcode>
+    <text>ABCDEFGHIJ</text>
+	<barcode type="CODE39">ABCDEFGHIJ</barcode>
+    <text>KLMNOPQRST</text>
+	<barcode type="CODE39">KLMNOPQRST</barcode>
+    <text>UVWXYZ</text>
+	<barcode type="CODE39">UVWXYZ</barcode>
+    <text>-. $/+%</text>
+	<barcode type="CODE39">-. $/+%</barcode>
+  </div>
+
+  <div height="20"/>
+
+  <qrcode unit-width="0.28mm">QRコードなのだ</qrcode>
+  
+  <div height="20"/>
+  
+  <div>
+    <text font-size="12">Image</text>
+  </div>
+  <div>
+    <image height="170" src="assets/sonny.jpg"/>
+  </div>
+
+</page>
+
+</xsl:template>
+</xsl:stylesheet>

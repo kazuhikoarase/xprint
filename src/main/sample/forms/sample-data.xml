@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="Utf-8" ?>
+<root>
+
+  <sample comment="レイアウト">
+    <item align="top"/>
+    <item align="top"/>
+    <item align="bottom"/>
+    <item align="bottom"/>
+    <item align="left"/>
+    <item align="left"/>
+    <item align="right"/>
+    <item align="right"/>
+    <item align="center"/>
+    <item align="center" content-align="right"/>
+  </sample>
+
+  <sample comment="罫線">
+    <item border-width="0.5mm 0 0 0"/>
+    <item border-width="0 0.5mm 0 0"/>
+    <item border-width="0 0 0.5mm 0"/>
+    <item border-width="0 0 0 0.5mm"/>
+  </sample>
+
+  <sample comment="罫線2">
+    <item border-width="0 0 0 0 0.5mm 0"/>
+    <item border-width="0 0 0 0 0 0.5mm"/>
+    <item border-width="0.5mm 0.5mm 0.5mm 0.5mm 0.5mm 0.5mm"/>
+  </sample>
+
+  <sample comment="罫線3">
+  </sample>
+
+  <sample comment="テキスト">
+  </sample>
+
+  <sample comment="イメージ">
+  </sample>
+
+  <sample comment="バーコード">
+  </sample>
+
+</root>

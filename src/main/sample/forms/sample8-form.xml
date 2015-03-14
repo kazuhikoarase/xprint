@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="Utf-8" ?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <!-- 郵便番号のオフセット -->
+  <!-- はがきやプリンタに合わせて調整します。 -->
+  <xsl:variable name="offset-x">8mm</xsl:variable>
+  <xsl:variable name="offset-y">12mm</xsl:variable>
+
+  <!-- 郵便番号の境界表示フラグ -->
+  <!-- 本番用
+  <xsl:variable name="show-bounds">false</xsl:variable>
+   -->
+  <xsl:variable name="show-bounds">true</xsl:variable>
+
+  <!-- テキストの方向 -->
+  <xsl:variable name="text-direction">horizontal</xsl:variable>
+  <!-- 縦書き -->
+  <!-- 
+  <xsl:variable name="text-direction">vertical</xsl:variable>
+   -->
+
+  <xsl:variable name="from-addr-font-size">11pt</xsl:variable>
+  <xsl:variable name="from-name-font-size">14pt</xsl:variable>
+  <xsl:variable name="to-addr-font-size">16pt</xsl:variable>
+  <xsl:variable name="to-name-font-size">28pt</xsl:variable>
+
+  <xsl:template match="/address-book">
+    <page width="100mm" height="148mm" padding="0" font-family="sans-serif">
+      <xsl:choose>
+        <xsl:when test="$text-direction = 'horizontal'">
+          <xsl:call-template name="h-layout"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="v-layout"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </page>
+  </xsl:template>
+  
+  <xsl:template name="h-layout">
+
+    <!-- 差出人(ページ毎に存在するものは、フッターであっても header として定義します) -->
+    <header align="center" font-size="{$from-addr-font-size}">
+      <div align="bottom" margin="0 5mm 25mm 8mm">
+        <text margin="0 0 2mm 0"><xsl:value-of select="from-zip-code" /></text>
+        <text margin="0 0 1pt 0"><xsl:value-of select="from-addr1" /></text>
+        <text margin="0 0 2mm 0"><xsl:value-of select="from-addr2" /></text>
+        <text font-size="{$from-name-font-size}"><xsl:value-of select="from-name" /></text>
+      </div>
+    </header>
+
+    <xsl:apply-templates mode="h"/>
+
+  </xsl:template>
+
+  <xsl:template match="address" mode="h">
+
+      <record page-break="always" align="center">
+
+      <!-- 郵便番号 -->
+      <script src="assets/zip-code.js" 
+          margin="{$offset-y} {$offset-x} 0 {$offset-x}">
+        var args = {
+          zipCode : "<xsl:value-of select='to-zip-code'/>",
+          showBounds : "<xsl:value-of select='$show-bounds'/>"
+        };
+      </script>
+
+      <!-- 宛先 -->
+      <div margin="25mm 5mm 0mm 25mm" padding="0">
+
+        <div font-size="{$to-addr-font-size}" padding="0" margin="0 0 5mm 0">
+          <text margin="0 0 2mm 0"><xsl:value-of select="to-addr1"/></text>
+          <text><xsl:value-of select="to-addr2" /></text>
+        </div>
+
+        <div font-size="{$to-name-font-size}" padding="0" margin="0 0 2mm 0">
+          <text align="left" margin="0 2mm 0 0"><xsl:value-of select="to-name"/></text>
+          <text align="left">様</text>
+        </div>
+      </div>
+      
+    </record>
+
+  </xsl:template>
+  
+  <xsl:template name="v-layout">
+
+    <!-- 差出人(ページ毎に存在するものは、header として定義します) -->
+    <header align="center" font-size="{$from-addr-font-size}">
+      <div align="bottom" margin="0 5mm 25mm 8mm">
+        <text margin="0 0 2mm 0" ><xsl:value-of select="from-zip-code" /></text>
+        <script align="left" margin="14mm 2mm 0 1mm" font-size="{$from-name-font-size}" src="assets/vertical-text.js"><xsl:value-of select="from-name" /></script>
+        <script align="left" margin="6mm 1pt 0 0" src="assets/vertical-text.js"><xsl:value-of select="from-addr2" /></script>
+        <script align="left" margin="0 0 0 0" src="assets/vertical-text.js"><xsl:value-of select="from-addr1" /></script>
+      </div>
+    </header>
+
+    <xsl:apply-templates mode="v"/>
+
+  </xsl:template>
+
+  <xsl:template match="address" mode="v">
+
+      <record page-break="always" align="center">
+
+      <!-- 郵便番号 -->
+      <script src="assets/zip-code.js" 
+          margin="{$offset-y} {$offset-x} 0 {$offset-x}">
+        var args = {
+          zipCode : "<xsl:value-of select='to-zip-code'/>",
+          showBounds : "<xsl:value-of select='$show-bounds'/>"
+        };
+      </script>
+
+      <!-- 宛先 -->
+      <div margin="10mm 5mm 0mm 46mm" padding="0">
+
+        <div align="left" font-size="{$to-name-font-size}" padding="0" margin="16mm 4mm 0mm 0mm">
+          <script src="assets/vertical-text.js"><xsl:value-of select="to-name"/></script>
+          <div height="2mm"/>
+          <script src="assets/vertical-text.js">様</script>
+        </div>
+
+        <div align="left" font-size="{$to-addr-font-size}" padding="0">
+          <script src="assets/vertical-text.js" align="left" margin="10mm 2mm 0mm 0mm"><xsl:value-of select="to-addr2" /></script>
+          <script src="assets/vertical-text.js" align="left"><xsl:value-of select="to-addr1" /></script>
+        </div>
+
+      </div>
+
+    </record>
+
+  </xsl:template>
+
+</xsl:stylesheet>

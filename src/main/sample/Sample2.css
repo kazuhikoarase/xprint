@@ -1,0 +1,14 @@
+@namespace s "library://ns.adobe.com/flex/spark";
+
+global {
+	theme-color : #ff9900;
+	font-size : 12pt;
+}
+
+s|Application {
+	padding-top : 4px;
+	padding-bottom : 4px;
+	padding-left : 4px;
+	padding-right : 4px;
+	background-color : #666666;
+}

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="Utf-8" ?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <xsl:template match="/root">
+    <page width="595" height="841" font-size="11pt">
+
+      <header>
+        <text content-align="right" font-size="8pt"><property select="page-no"/>/<property select="page-count"/></text>
+      </header>
+      <header align="bottom">
+        <text content-align="center" font-size="8pt">- XPrint サンプル集 -</text>
+      </header>
+
+      <text font-size="24pt" margin="5mm 0 0 0">XPrint サンプル集</text>
+      <xsl:for-each select="sample">
+        <record page-break="auto">
+          <div height="5mm"/>
+          <text font-size="14pt"><xsl:value-of select="@comment"/></text>
+          <div height="5mm"/>
+          <xsl:apply-templates select="."/>
+        </record>
+      </xsl:for-each>
+    </page>
+  </xsl:template>
+
+  <xsl:template match="sample[@comment='レイアウト']">
+    <text>レイアウトは子要素のalignに従って、まずはじめに上下左右、最後に中央部分を敷き詰めます。</text>
+    <div margin="2mm 0 2mm 0" font-size="9pt" border-width="0.2mm" height="50mm" padding="1mm">
+      <xsl:for-each select="item">
+        <text
+          align="{@align}"
+          content-align="{@content-align}"
+          border-width="0.2mm"
+          padding="0.5mm"
+          margin="0.5mm"
+        >align="<xsl:value-of select="@align"/>" (<xsl:value-of select="
+          count(preceding-sibling::item[@align=current()/@align]) + 1
+        "/>)</text>
+      </xsl:for-each>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="sample[@comment='罫線']">
+    <text>border-widthを指定して、短形の上下左右に罫線を引きます。4つのパラメータは上、右、下、左。 上から順に時計回りです。</text>
+    <xsl:call-template name="border-width"/>
+  </xsl:template>
+
+  <xsl:template match="sample[@comment='罫線2']">
+    <text>対角線は第5,6番目のパラメータで指定します。</text>
+    <xsl:call-template name="border-width"/>
+  </xsl:template>
+
+  <xsl:template name="border-width">
+    <div width="2mm"/>
+    <xsl:for-each select="item">
+      <div height="20mm">
+        <div align="center" border-width="0.5mm" color="#cccccc">
+        </div>
+        <text
+          align="center"
+          border-width="{@border-width}"
+          padding="1mm"
+        >border-width="<xsl:value-of select="@border-width"/>"</text>
+      </div>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="sample[@comment='罫線3']">
+
+    <text>corner-radiusで短形の角を丸めます。</text>
+    <div margin="2mm 0 2mm 0" border-width="0.5mm" corner-radius="3mm" padding="2mm">
+      <text>corner-radius="3mm"</text>
+    </div>
+
+    <text>stroke-dash-patternで点線のパターンを指定します。</text>
+    <div margin="2mm 0 2mm 0" border-width="0.5mm" corner-radius="3mm" padding="2mm"
+        stroke-dash-pattern="1mm 1mm">
+      <text>stroke-dash-pattern="1mm 1mm"</text>
+    </div>
+
+    <text>上記例では見かけ上は1mmおきになりません。これは、線の終端の既定値がsquareであるためです。stroke-capでbuttを指定すると、正確に1mmおきとなります。</text>
+    <div padding="0" margin="2mm 0 2mm 0">
+      <div width="50mm" align="left" margin="0 5mm 0 0" border-width="0.5mm" corner-radius="3mm" padding="2mm"
+          stroke-dash-pattern="1mm 1mm" stroke-cap="square">
+        <text>stroke-cap="square"</text>
+      </div>
+      <div width="50mm" align="left" margin="0" border-width="0.5mm" corner-radius="3mm" padding="2mm"
+          stroke-dash-pattern="1mm 1mm" stroke-cap="butt">
+        <text>stroke-cap="butt"</text>
+      </div>
+      <div width="50mm" align="left" margin="0 0 0 5mm" border-width="0.5mm" corner-radius="3mm" padding="2mm"
+          stroke-dash-pattern="1mm 1mm" stroke-cap="round">
+        <text>stroke-cap="round"</text>
+      </div>
+    </div>
+
+    <text>パターンを増やすと鎖線も指定できます。</text>
+    <div margin="2mm 0 2mm 0" border-width="0.5mm" corner-radius="3mm" padding="2mm"
+        stroke-cap="round" stroke-dash-pattern="0mm 1mm 2mm 1mm">
+      <text>stroke-dash-pattern="0mm 1mm 2mm 1mm"</text>
+    </div>
+
+    <text>角の形はstroke-joinで指定します。</text>
+    <div padding="0" margin="2mm 0 2mm 0">
+      <div width="50mm" align="left" margin="0 5mm 0 0" border-width="2mm" padding="2mm"
+          stroke-join="miter">
+        <text>stroke-join="miter"</text>
+      </div>
+      <div width="50mm" align="left" margin="0" border-width="2mm" padding="2mm"
+          stroke-join="round">
+        <text>stroke-join="round"</text>
+      </div>
+      <div width="50mm" align="left" margin="0 0 0 5mm" border-width="2mm" padding="2mm"
+          stroke-join="bevel">
+        <text>stroke-join="bevel"</text>
+      </div>
+    </div>
+
+  </xsl:template>
+
+  <xsl:template match="sample[@comment='テキスト']">
+    <text>横方向の配置はcontent-alignで指定します。</text>
+    <div padding="0" margin="2mm 0 2mm 0">
+      <text padding="2mm" border-width="0.5" align="left" width="60mm" content-align="left">content-align="left"</text>
+      <text padding="2mm" border-width="0.5" align="left" width="60mm" content-align="center">content-align="center"</text>
+      <text padding="2mm" border-width="0.5" align="left" width="60mm" content-align="right">content-align="right"</text>
+    </div>
+    <text>縦方向の配置はcontent-vertical-alignで指定します。</text>
+    <div padding="0" margin="2mm 0 2mm 0">
+      <text padding="2mm" border-width="0.5" align="left" width="60mm" height="60mm" content-vertical-align="top">content-vertical-align="top"</text>
+      <text padding="2mm" border-width="0.5" align="left" width="60mm" height="60mm" content-vertical-align="middle">content-vertical-align="middle"</text>
+      <text padding="2mm" border-width="0.5" align="left" width="60mm" height="60mm" content-vertical-align="bottom">content-vertical-align="bottom"</text>
+    </div>
+    <text>文字、線の色はcolorで指定します。背景色はbackground-colorで指定します。</text>
+    <div padding="0" margin="2mm 0 2mm 0">
+      <div margin="0 5mm 0 0" align="left" border-width="1mm" color="#ff0000" background-color="#ffff00">
+        <text color="#0000ff" font-size="20pt">文字の色</text>
+      </div>
+    </div>
+  </xsl:template>
+  
+  <xsl:template match="sample[@comment='イメージ']">
+    <text>イメージはサイズを指定すると、そのサイズ内に収まるように縦横比を保ったままリサイズされます。</text>
+    <image src="assets/sonny.jpg" height="50mm" margin="2mm 0 2mm 0"/>
+    <text>align="center"を指定すると、イメージにテキストを重ね合わせることができます。</text>
+    <div margin="2mm 0 2mm 0">
+      <image align="center" src="assets/sonny.jpg" height="50mm"/>
+      <text align="center" content-vertical-align="bottom" color="#ffffff" font-size="14pt">イメージの説明</text>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="sample[@comment='バーコード']">
+    <text>何種類かのバーコード及び、QRコードに対応しています。</text>
+    <barcode margin="2mm 0 2mm 0" type="JAN">012345678901</barcode>
+    <qrcode margin="2mm 0 2mm 0" unit-width="1mm">QRコードです。</qrcode>
+  </xsl:template>
+  
+</xsl:stylesheet>
