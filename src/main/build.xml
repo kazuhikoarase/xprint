@@ -1,30 +1,22 @@
 <?xml version="1.0" encoding="Utf-8" ?>
-
-<project default="all" basedir="../">
-
-	<property environment="env" />
-	<property name="FLEX_HOME" value="${env.FLEX_HOME}"/>
+<project default="all" basedir="../..">
 
 	<property name="src" location="src"/>
-	<property name="src.java" location="${src}/java"/>
-	<property name="src.flash" location="${src}/flash"/>
-	<property name="src.assets" location="${src}/assets"/>
-	<property name="src.sample" location="${src}/sample"/>
-	
+	<property name="src.java" location="${src}/main/java"/>
+
+	<property name="src.assets" location="${src}/main/assets"/>
+	<property name="src.sample" location="${src}/main/sample"/>
+
 	<property name="build" location="build"/>
 	<property name="build.java" location="${build}/java"/>
-	<property name="build.flash" location="${build}/flash"/>
 
 	<property name="build.docs" location="${build}/docs"/>
 	<property name="build.docs.java" location="${build.docs}/java"/>
-	<property name="build.docs.flash" location="${build.docs}/flash"/>
 
 	<property name="dist" location="dist"/>
 	<property name="dist.package" location="${dist}/xprint"/>
 
 	<property name="lib" location="lib"/>
-
-	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
 
 	<path id="classpath">
 		<fileset dir="${lib}">
@@ -62,15 +54,6 @@
 			<classpath refid="classpath"/>
 		</javac>
 
-		<mkdir dir="${build.flash}"/>
-		<compc 
-			benchmark="true"
-			target-player="10.3.0"
-			include-classes="xprint.XPageRenderer"
-			output="${build.flash}/xprint.swc"
-		>
-			<compiler.source-path path-element="${src.flash}"/>
-		</compc>
 	</target>
 	
 	<target name="resource" depends="init">
@@ -95,16 +78,6 @@
 			destdir="${build.docs.java}" author="false">
 		</javadoc>
 
-		<mkdir dir="${build.docs.flash}"/>
-		<asdoc output="${build.docs.flash}" locale="en_US"
-				main-title="XPrint"
-				window-title="XPrint"
-				package-description-file="${src.assets}/overviews.xml"
-				lenient="true" failonerror="true">
-		    <compiler.source-path path-element="${src.flash}" /> 
-            <doc-classes class="xprint.XPageRenderer"/>
-		</asdoc>
-		
 	</target>
 
 	<target name="dist" depends="compile,resource,docs">
@@ -135,9 +108,7 @@
 				<exclude name="com/d_project/xprint/ui/*"/>
 			</fileset>
 		</jar>
-		
-		<copy todir="${dist.package}/lib" file="${build.flash}/xprint.swc"/>
-		
+
 		<jar jarfile="${dist.package}/lib/pageviewer.jar"
 				manifest="${src.assets}/MANIFEST.MF.pageviewer">
 			<fileset dir="${build.java}">
