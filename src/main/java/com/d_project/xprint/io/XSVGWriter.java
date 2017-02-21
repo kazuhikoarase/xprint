@@ -40,9 +40,11 @@ public class XSVGWriter extends AbstractXWriter {
         xout.write(" height=\"");
         xout.writeDouble(height);
         xout.write("\" >");
+        xout.write("<g>");
   
         pages[i].paintAll(context, new XSVGGraphics(xout) );
 
+        xout.write("</g>");
         xout.write("</svg>");
         
         if (canceled) {
