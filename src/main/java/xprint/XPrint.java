@@ -16,6 +16,7 @@ import com.d_project.xprint.core.XPrintable;
 import com.d_project.xprint.io.DefaultResourceResolver;
 import com.d_project.xprint.io.XPDFWriter;
 import com.d_project.xprint.io.XRawWriter;
+import com.d_project.xprint.io.XSVGWriter;
 import com.d_project.xprint.parser.PageParser;
 import com.d_project.xprint.parser.XNodeLoader;
 
@@ -206,6 +207,29 @@ public class XPrint {
 	        XRawWriter writer = new XRawWriter();
 	        writer.setPages(context, pages);
 	        writer.create(out, null);
+
+        } catch (Exception e) {
+            throw new XPrintException(e);
+        }
+    }
+
+    /**
+     * RAW データを出力する。
+     * @param out 出力ストリーム
+     * @exception XPrintException 出力中にエラーが発生
+     */
+    public void outputSVG(OutputStream out)
+    throws XPrintException {
+
+      if (pages == null) {
+        throw new XPrintException("no form and data is loaded.");
+      }
+
+      try {
+
+          XSVGWriter writer = new XSVGWriter();
+          writer.setPages(context, pages);
+          writer.create(out, null);
 
         } catch (Exception e) {
             throw new XPrintException(e);

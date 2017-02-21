@@ -48,11 +48,17 @@ public class Sample1 {
 			outputPDF(outputFile, formFileName, dataFileName);
 		}
 		
-		{
-			File outputFile = new File(outputDir, outputName + ".dat");
-			prepareDir(outputFile);
-			outputRaw(outputFile, formFileName, dataFileName);
-		}
+    {
+      File outputFile = new File(outputDir, outputName + ".dat");
+      prepareDir(outputFile);
+      outputRaw(outputFile, formFileName, dataFileName);
+    }
+
+    {
+      File outputFile = new File(outputDir, outputName + ".svg");
+      prepareDir(outputFile);
+      outputSVG(outputFile, formFileName, dataFileName);
+    }
 	}
 
 	private void prepareDir(File file) {
@@ -102,4 +108,24 @@ public class Sample1 {
 
 		logger.info("done.");
 	}
+
+	private void outputSVG(File outputFile, String formFileName, String dataFileName)
+  throws Exception {
+
+    logger.info("output svg " + outputFile.getAbsolutePath() );
+    
+    OutputStream out = new BufferedOutputStream(
+        new FileOutputStream(outputFile) );
+    
+    try {
+      XPrint xp = new XPrint();
+      xp.load(new File(formsDir, formFileName), 
+          (dataFileName != null)? new File(formsDir, dataFileName) : null);
+      xp.outputSVG(out);
+    } finally {
+      out.close();
+    }
+
+    logger.info("done.");
+  }
 }
