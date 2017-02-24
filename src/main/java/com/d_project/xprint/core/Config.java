@@ -9,6 +9,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import xprint.ResourceManager;
+
 /**
  * Config
  * @author Kazuhiko Arase
@@ -76,11 +78,8 @@ public final class Config {
 
         Document config = null;
 
-        InputStream in = getClass().getResourceAsStream("/" + CONFIG_FILE);
-
-        if (in == null) {
-        	in = ClassLoader.getSystemResourceAsStream(CONFIG_FILE);
-        }
+        InputStream in = ResourceManager.getResourceManager().
+            getResourceAsStream("/" + CONFIG_FILE);
 
         if (in != null) {
 

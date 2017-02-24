@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import xprint.ResourceManager;
+
 /**
  * FontManager
  * @author Kazuhiko Arase
@@ -84,10 +86,9 @@ public final class FontManager {
 
             try {
 
-                InputStream in = getClass().getResourceAsStream(path);
-            	if (in == null) {
-            		in = ClassLoader.getSystemResourceAsStream(path);
-            	}
+                InputStream in = ResourceManager.getResourceManager().
+                    getResourceAsStream(path);
+
             	if (in == null) {
 	                in = new BufferedInputStream(new FileInputStream(path) );
             	}
