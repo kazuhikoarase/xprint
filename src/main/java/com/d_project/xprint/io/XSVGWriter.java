@@ -35,11 +35,18 @@ public class XSVGWriter extends AbstractXWriter {
         xout.write(" xmlns=\"http://www.w3.org/2000/svg\"");
         xout.write(" xmlns:xlink=\"http://www.w3.org/1999/xlink\"");
         xout.write(" width=\"");
-        xout.writeDouble(width);
+        xout.writeInt( (int)width);
         xout.write("\"");
         xout.write(" height=\"");
-        xout.writeDouble(height);
-        xout.write("\" >");
+        xout.writeInt( (int)height);
+        xout.write("\"");
+        xout.write(" viewBox=\"");
+        xout.write("0 0 ");
+        xout.writeInt( (int)width);
+        xout.write(" ");
+        xout.writeInt( (int)height);
+        xout.write("\"");
+        xout.write(" >");
         xout.write("<g>");
   
         pages[i].paintAll(context, new XSVGGraphics(xout) );

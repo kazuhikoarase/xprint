@@ -14,6 +14,8 @@ import com.d_project.xprint.core.AbstractXGraphics;
  */
 public class XSVGGraphics extends AbstractXGraphics {
 
+  private static final int DELM = '\u0020';
+
   private XSVGOutputStream out;
   private double tx;
   private double ty;
@@ -55,13 +57,11 @@ public class XSVGGraphics extends AbstractXGraphics {
 
       out.write(" stroke=\"none\"");
 
-      out.write(" fill=\"RGB(");
-      out.write(String.valueOf(color.getRed() ) );
-      out.write(',');
-      out.write(String.valueOf(color.getGreen() ) );
-      out.write(',');
-      out.write(String.valueOf(color.getBlue() ) );
-      out.write(")\" d=\"");
+      out.write(" fill=\"#");
+      out.writeHex(color.getRed() );
+      out.writeHex(color.getGreen() );
+      out.writeHex(color.getBlue() );
+      out.write("\" d=\"");
 
       while (!it.isDone() ) {
 
@@ -80,13 +80,16 @@ public class XSVGGraphics extends AbstractXGraphics {
         case PathIterator.SEG_QUADTO :
           out.write('Q');
           writePoint(coords[0], coords[1]);
+          out.write(DELM);
           writePoint(coords[2], coords[3]);
           break;
 
         case PathIterator.SEG_CUBICTO :
           out.write('C');
           writePoint(coords[0], coords[1]);
+          out.write(DELM);
           writePoint(coords[2], coords[3]);
+          out.write(DELM);
           writePoint(coords[4], coords[5]);
           break;
 
@@ -108,9 +111,8 @@ public class XSVGGraphics extends AbstractXGraphics {
   }
 
   private void writePoint(double x, double y) throws IOException {
-    out.write(' ');
     out.writeDouble(x + tx);
-    out.write(' ');
+    out.write(DELM);
     out.writeDouble(y + ty);
   }
 

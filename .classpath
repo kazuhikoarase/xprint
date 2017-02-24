@@ -3,7 +3,6 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="lib" path="lib/pdf.jar"/>
 	<classpathentry kind="lib" path="lib/qrcode.jar"/>
-	<classpathentry kind="lib" path="lib/ext/js.jar"/>
 	<classpathentry kind="lib" path="lib/ext/batik-anim.jar"/>
 	<classpathentry kind="lib" path="lib/ext/batik-awt-util.jar"/>
 	<classpathentry kind="lib" path="lib/ext/batik-bridge.jar"/>
@@ -28,6 +27,6 @@
 	<classpathentry kind="lib" path="lib/ext/xml-apis-ext.jar"/>
 	<classpathentry kind="lib" path="lib/ext/xml-apis.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="output" path="build/java"/>
 </classpath>
