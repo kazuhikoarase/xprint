@@ -22,9 +22,6 @@ public class XSVGOutputStream extends FilterOutputStream {
     out.write(HEX_CHARS.charAt( (b >> 4) & 0xf) );
     out.write(HEX_CHARS.charAt(b & 0xf) );
   }
-  public void writeInt(final int n) throws IOException {
-    write(String.valueOf(n) );
-  }
   public void writeDouble(final double n) throws IOException {
     write(formatter.format(n) );
   }
