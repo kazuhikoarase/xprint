@@ -22,7 +22,7 @@ import org.w3c.dom.NodeList;
  * Util
  * @author Kazuhiko Arase
  */
-public class Util {
+class Util {
 
   private Util() {
   }
