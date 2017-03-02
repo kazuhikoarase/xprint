@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<overviews>
-	<packages>
-		<package name="xprint">
-			<description>The xprint package contains classes for rendering raw data of XPrint.</description>
-			<shortDescription>The xprint package contains classes for rendering raw data of XPrint.</shortDescription>
-		</package>
-	</packages>
-</overviews>

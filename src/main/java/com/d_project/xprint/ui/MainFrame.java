@@ -17,6 +17,7 @@ import java.awt.print.PrinterJob;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -83,10 +84,14 @@ public class MainFrame extends JFrame {
     private MainFrame() {
 
         super("PageViewer");
-   
-        setIconImage(new ImageIcon(
-        	getClass().getResource("xprint_logo.png") ).getImage() );
-        
+
+        setIconImages(Arrays.asList(
+            new ImageIcon(getClass().
+                getResource("xprint_logo_x32.png") ).getImage(),
+            new ImageIcon(getClass().
+                getResource("xprint_logo_x128.png") ).getImage()
+        ) );
+
         //-----------------------------
         // prev
 
