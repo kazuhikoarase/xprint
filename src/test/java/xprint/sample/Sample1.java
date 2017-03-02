@@ -1,30 +1,27 @@
+package xprint.sample;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.net.URL;
 import java.util.logging.Logger;
+
+import org.junit.Test;
 
 import xprint.XPrint;
 
 public class Sample1 {
 
-	public static void main(String[] args) throws Exception {
-		new Sample1().start();
-	}
-
 	private final Logger logger = Logger.getLogger(getClass().getName() );
-	
-	private File baseDir;
-
-	private File formsDir;
 
 	private File outputDir;
-	
+
+	@Test
 	public void start() throws Exception {
 
-		baseDir = new File(".");
-		formsDir = new File(baseDir, "forms");
+		File baseDir = new File(".");
+		System.out.println(baseDir.getAbsolutePath() );
 		outputDir = new File(baseDir, "out");
 
 		output("sample1", "sample1-form.xml", null);
@@ -79,8 +76,8 @@ public class Sample1 {
 		
 		try {
 			XPrint xp = new XPrint();
-			xp.load(new File(formsDir, formFileName), 
-					(dataFileName != null)? new File(formsDir, dataFileName) : null);
+			xp.load(getResource(formFileName), 
+					(dataFileName != null)? getResource(dataFileName) : null);
 			xp.outputPDF(out);
 		} finally {
 			out.close();
@@ -99,8 +96,8 @@ public class Sample1 {
 		
 		try {
 			XPrint xp = new XPrint();
-			xp.load(new File(formsDir, formFileName), 
-					(dataFileName != null)? new File(formsDir, dataFileName) : null);
+			xp.load(getResource(formFileName), 
+					(dataFileName != null)? getResource(dataFileName) : null);
 			xp.outputRaw(out);
 		} finally {
 			out.close();
@@ -119,8 +116,8 @@ public class Sample1 {
     
     try {
       XPrint xp = new XPrint();
-      xp.load(new File(formsDir, formFileName), 
-          (dataFileName != null)? new File(formsDir, dataFileName) : null);
+      xp.load(getResource(formFileName), 
+          (dataFileName != null)? getResource(dataFileName) : null);
       xp.outputSVG(out);
     } finally {
       out.close();
@@ -128,4 +125,8 @@ public class Sample1 {
 
     logger.info("done.");
   }
+	
+	protected URL getResource(String name) {
+	  return getClass().getResource("forms/" + name);
+	}
 }

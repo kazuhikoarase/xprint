@@ -1,3 +1,7 @@
+/.gradle
+/gradle.properties
+/bin
 /build
 /dist
 /lib
+/bin

@@ -1,5 +1,4 @@
 
-//apply plugin: 'war'
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
@@ -7,6 +6,32 @@ sourceCompatibility = 1.6
 
 compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
+
+jar {
+  manifest {
+      attributes 'Claaa-Path' : '.'
+  }
+  exclude('com/d_project/xprint/ui/**')
+  exclude('xprint-config.xml')
+}
+
+task pageviewer (type : Jar) {
+  archiveName 'pageviewer.jar'
+  manifest {
+      attributes 'Class-Path' : 'xprint.jar pdf.jar qrcode.jar',
+        'Main-Class' : 'com.d_project.xprint.ui.Main'
+  }
+  from sourceSets.main.output
+  include('com/d_project/xprint/ui/**')
+}
+
+task all {
+  dependsOn 'clean'
+  dependsOn 'jar'
+  dependsOn 'pageviewer'
+  tasks.findByName('jar').mustRunAfter 'clean'
+  tasks.findByName('pageviewer').mustRunAfter 'jar'
+}
 
 uploadArchives {
   repositories {
@@ -25,4 +50,5 @@ dependencies {
   compile 'org.apache.xmlgraphics:batik-bridge:1.8'
   compile files('lib/pdf.jar')
   compile files('lib/qrcode.jar')
+  testCompile 'junit:junit:4.12'
 }
