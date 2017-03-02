@@ -1,32 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry kind="lib" path="lib/pdf.jar"/>
-	<classpathentry kind="lib" path="lib/qrcode.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-anim.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-awt-util.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-bridge.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-codec.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-css.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-dom.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-ext.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-extension.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-gui-util.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-gvt.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-parser.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-script.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-svg-dom.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-svggen.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-swing.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-transcoder.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-util.jar"/>
-	<classpathentry kind="lib" path="lib/ext/batik-xml.jar"/>
-	<classpathentry kind="lib" path="lib/ext/pdf-transcoder.jar"/>
-	<classpathentry kind="lib" path="lib/ext/xalan-2.6.0.jar"/>
-	<classpathentry kind="lib" path="lib/ext/xerces_2_5_0.jar"/>
-	<classpathentry kind="lib" path="lib/ext/xml-apis-ext.jar"/>
-	<classpathentry kind="lib" path="lib/ext/xml-apis.jar"/>
+	<classpathentry kind="src" path="src/main/java">
+		<attributes>
+			<attribute name="FROM_GRADLE_MODEL" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="output" path="build/java"/>
 </classpath>

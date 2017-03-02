@@ -1,0 +1,28 @@
+
+//apply plugin: 'war'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.6
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+uploadArchives {
+  repositories {
+    flatDir {
+      dirs 'repos'
+    }
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile 'javax.servlet:javax.servlet-api:3.0.1'
+  compile 'org.apache.xmlgraphics:batik-bridge:1.8'
+  compile files('lib/pdf.jar')
+  compile files('lib/qrcode.jar')
+}
