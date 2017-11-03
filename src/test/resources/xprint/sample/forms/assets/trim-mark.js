@@ -1,4 +1,6 @@
 /**
+ * trim-mark.js
+ * @author Kazuhiko Arase
  * トリムマーク
  */
 

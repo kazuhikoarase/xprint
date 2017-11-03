@@ -75,6 +75,7 @@ public class Sample1 {
 				new FileOutputStream(outputFile) );
 		
 		try {
+		  System.out.println("form:::" + formFileName);
 			XPrint xp = new XPrint();
 			xp.load(getResource(formFileName), 
 					(dataFileName != null)? getResource(dataFileName) : null);

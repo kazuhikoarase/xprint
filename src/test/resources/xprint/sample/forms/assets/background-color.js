@@ -1,4 +1,6 @@
 /**
+ * background-color.js
+ * @author Kazuhiko Arase
  * 背景色描画
  */
 
@@ -19,6 +21,6 @@ function paint(context) {
 	
 	// 指定された gap 分、大きめの長方形を描く。
 	g.setColor(color);
-	g.fill(java.awt.geom.Rectangle2D.Double(
+	g.fill(new (Java.type('java.awt.geom.Rectangle2D.Double'))(
 		-gap, -gap, bounds.width + gap * 2, bounds.height + gap * 2) );
 }

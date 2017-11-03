@@ -88,36 +88,43 @@ public class XScript extends XNode {
 
         return player;
     }
-    
-    private void execSrc(XNodeContext context, PostExecute postExecute) {
 
-    	if (!Config.getInstance().scriptEnabled() ) {
-    		throw new SecurityException("script not enabled.");
-    	}
-
-    	String src = getAttribute(AttributeKeys.SRC);
-    	
-    	ScriptEngineManager manager = new ScriptEngineManager();
-        ScriptEngine engine = manager.getEngineByName("ECMAScript");
-
-        try {
-			Reader in = new BufferedReader(new InputStreamReader(
-					context.getResourceAsStream(src), "Utf-8") );
-			try {
-
-				engine.put(ScriptEngine.FILENAME, src);
-				engine.eval(in);
-				
-				postExecute.execute(engine);
-				
-			} finally {
-				in.close();
-			}
-        } catch(Exception e) {
-        	throw new RuntimeException(e);
-        }
+  private ScriptEngine createScriptEngine() throws Exception {
+    ScriptEngineManager manager = new ScriptEngineManager();
+    ScriptEngine engine = manager.getEngineByName("ECMAScript");
+    String filename = "Bridge.js";
+    Reader in = new BufferedReader(new InputStreamReader(
+        getClass().getResourceAsStream(filename), "Utf-8") );
+    try {
+      engine.put(ScriptEngine.FILENAME, filename);
+      engine.eval(in);
+    } finally {
+      in.close();
     }
-    
+    return engine;
+  }
+
+  private void execSrc(XNodeContext context, PostExecute postExecute) {
+    if (!Config.getInstance().scriptEnabled() ) {
+      throw new SecurityException("script not enabled.");
+    }
+    try {
+      String src = getAttribute(AttributeKeys.SRC);
+      ScriptEngine engine = createScriptEngine();
+      Reader in = new BufferedReader(new InputStreamReader(
+        context.getResourceAsStream(src), "Utf-8") );
+      try {
+        engine.put(ScriptEngine.FILENAME, src);
+        engine.eval(in);
+        postExecute.execute(engine);
+      } finally {
+        in.close();
+      }
+    } catch(Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
     private static interface PostExecute {
     	void execute(ScriptEngine engine) throws Exception;
     }

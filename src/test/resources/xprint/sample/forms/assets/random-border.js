@@ -1,4 +1,6 @@
 /**
+ * random-border.js
+ * @author Kazuhiko Arase
  * ランダム枠線
  */
 
@@ -9,7 +11,7 @@ function paint(context) {
 	var bounds = context.bounds;
 
 	// ランダム
-	var rand = java.util.Random(0);
+	var rand = new (Java.type('java.util.Random'))(0);
 
 
 	var rnd = context.parseNumber("6mm");
@@ -21,7 +23,7 @@ function paint(context) {
 	var start = null;
 
 	// パスオブジェクト作成
-	var path = java.awt.geom.GeneralPath();
+	var path = new (Java.type('java.awt.geom.GeneralPath'))();
 
 	function random_point(x, y) {
 		return [

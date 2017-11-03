@@ -1,4 +1,6 @@
 /**
+ * zip-code.js
+ * @author Kazuhiko Arase
  * 郵便番号
  */
 
@@ -44,10 +46,10 @@ function paingImpl(context, args) {
 	];
 	
 	function createStroke(width) {
-		return java.awt.BasicStroke(
+		return new (Java.type('java.awt.BasicStroke'))(
 			context.parseNumber(width),
-			java.awt.BasicStroke.CAP_BUTT,
-			java.awt.BasicStroke.JOIN_MITER);
+			Java.type('java.awt.BasicStroke').CAP_BUTT,
+			Java.type('java.awt.BasicStroke').JOIN_MITER);
 	}
 	
 	// 全体の幅と高さ
@@ -73,7 +75,7 @@ function paingImpl(context, args) {
 		// 上3桁
 		g.setStroke(createStroke("0.5mm") );
 		for (var i = 0; i < 3; i++) {
-			g.draw(java.awt.geom.Rectangle2D.Double(
+			g.draw(new (Java.type('java.awt.geom.Rectangle2D.Double'))(
 				getX(posList[i]), getY(0), cell_w, rectH) );
 		}
 	
@@ -87,7 +89,7 @@ function paingImpl(context, args) {
 		// 下4桁
 		g.setStroke(createStroke("0.3mm") );
 		for (var i = 3; i < 7; i++) {
-			g.draw(java.awt.geom.Rectangle2D.Double(
+			g.draw(new (Java.type('java.awt.geom.Rectangle2D.Double'))(
 				getX(posList[i]), getY(0), cell_w, rectH) );
 		}
 	}
@@ -97,10 +99,10 @@ function paingImpl(context, args) {
 
 		g.setColor(context.parseColor("#000000") );
 		
-		var frc = java.awt.font.FontRenderContext(null, true, true);
+		var frc = new (Java.type('java.awt.font.FontRenderContext'))(null, true, true);
 
 		for (var i = 0; i < Math.min(zipCode.length, posList.length); i++) {
-			var layout = java.awt.font.TextLayout(
+			var layout = new (Java.type('java.awt.font.TextLayout'))(
 				zipCode.charAt(i), font, frc);
 			var dx = (cell_w - layout.advance) / 2;
 			var dy = (rectH - layout.ascent - layout.descent) / 2;
@@ -118,10 +120,10 @@ function paingImpl(context, args) {
 }
 
 function deriveFont(font, weight, size) {
-	var attr = java.util.HashMap();
-	attr.put(java.awt.font.TextAttribute.WEIGHT, 
-			java.lang.Float(weight) );
-	attr.put(java.awt.font.TextAttribute.SIZE,
-			java.lang.Float(size) );
+	attr = new (Java.type('java.util.HashMap'))();
+	attr.put(Java.type('java.awt.font.TextAttribute').WEIGHT, 
+			new (Java.type('java.lang.Float'))(weight) );
+	attr.put(Java.type('java.awt.font.TextAttribute').SIZE,
+			new (Java.type('java.lang.Float'))(size) );
 	return font.deriveFont(attr);
 }
