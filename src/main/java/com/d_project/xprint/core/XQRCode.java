@@ -3,7 +3,7 @@ package com.d_project.xprint.core;
 import java.awt.geom.Dimension2D;
 import java.awt.image.BufferedImage;
 
-import com.d_project.qrcode.ErrorCorrectLevel;
+import com.d_project.qrcode.ErrorCorrectionLevel;
 import com.d_project.qrcode.QRCode;
 
 /**
@@ -29,18 +29,18 @@ public class XQRCode extends XNode {
         return new Size2D(size * unitWidth, size * unitWidth);
     }
     
-    private int getErrorCorrectLevel() {
+    private int getErrorCorrectionLevel() {
 
-    	String ecl = getAttribute(AttributeKeys.ERROR_CORRECT_LEVEL);
+    	String ecl = getAttribute(AttributeKeys.ERROR_CORRECTION_LEVEL);
 
     	if ("L".equals(ecl) ) {
-    		return ErrorCorrectLevel.L;
+    		return ErrorCorrectionLevel.L;
     	} else if ("Q".equals(ecl) ) {
-    		return ErrorCorrectLevel.Q;
+    		return ErrorCorrectionLevel.Q;
     	} else if ("M".equals(ecl) ) {
-	    	return ErrorCorrectLevel.M;
+	    	return ErrorCorrectionLevel.M;
     	} else {
-    		return ErrorCorrectLevel.H;
+    		return ErrorCorrectionLevel.H;
     	}
     }
     
@@ -88,14 +88,14 @@ public class XQRCode extends XNode {
 		
 		if (typeNumber == null) {
 
-			return QRCode.getMinimumQRCode(text, getErrorCorrectLevel() );
+			return QRCode.getMinimumQRCode(text, getErrorCorrectionLevel() );
 
 		} else {
 
 			try {
 				QRCode qrCode = new QRCode();
 				qrCode.setTypeNumber(Integer.parseInt(typeNumber) );
-				qrCode.setErrorCorrectLevel(getErrorCorrectLevel() );
+				qrCode.setErrorCorrectionLevel(getErrorCorrectionLevel() );
 				qrCode.addData(text);
 				qrCode.make();
 				return qrCode;

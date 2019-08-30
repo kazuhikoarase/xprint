@@ -21,7 +21,7 @@ public interface AttributeKeys {
 
 	// qr
     String TYPE_NUMBER = "type-number";
-    String ERROR_CORRECT_LEVEL = "error-correct-level";
+    String ERROR_CORRECTION_LEVEL = "error-correction-level";
 
     String COLOR            = "color";
     String BACKGROUND_COLOR = "background-color";

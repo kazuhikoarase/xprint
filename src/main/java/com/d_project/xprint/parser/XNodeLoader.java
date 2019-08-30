@@ -174,7 +174,7 @@ public class XNodeLoader {
                 childXNode.setNode(childElement.cloneNode(true) );
                 setAttributes(childXNode, childElement, new String[]{"0","0","0","0"});
 		        setAttribute(childXNode, childElement, AttributeKeys.TYPE_NUMBER, null);
-		        setAttribute(childXNode, childElement, AttributeKeys.ERROR_CORRECT_LEVEL, null);
+		        setAttribute(childXNode, childElement, AttributeKeys.ERROR_CORRECTION_LEVEL, null);
 		        setAttribute(childXNode, childElement, AttributeKeys.UNIT_WIDTH, "0.8");
                 xnode.appendChild(childXNode);
 
