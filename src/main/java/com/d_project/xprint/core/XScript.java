@@ -16,78 +16,70 @@ import com.d_project.xprint.scripting.XPrintContextImpl;
  */
 public class XScript extends XNode {
 
-	private XGraphicsPlayer player;
-    
-    private Dimension2D contentSize;
+  public static final String NODE_CONTEXT = "com.d_project.xprint.core.XNodeContext";
 
-    public XScript() {
-        super(NodeNames.SCRIPT_NODE);
+  private XGraphicsPlayer player;
+
+  private Dimension2D contentSize;
+
+  public XScript() {
+    super(NodeNames.SCRIPT_NODE);
+  }
+
+  public Dimension2D getContentSize(XNodeContext context) {
+    if (contentSize == null) {
+      contentSize = createContentSize(context);
+    }
+    return contentSize;
+  }
+
+  public void paint(XNodeContext context, IXGraphics g) {
+
+    if (player == null) {
+      player = createPlayer(context);
     }
 
-    public Dimension2D getContentSize(XNodeContext context) {
-    	
-    	if (contentSize == null) {
-    		contentSize = createContentSize(context);
-    	}
+    player.play(g);
 
-        return contentSize;
-    }
+    return;
+  }
 
-    public void paint(XNodeContext context, IXGraphics g) {
+  private Dimension2D createContentSize(XNodeContext context) {
 
-    	if (player == null) {
-    		player = createPlayer(context);
-    	}
+    final double[] size = new double[2];
 
-		player.play(g);
+    execSrc(context, new PostExecute() {
+      public void execute(ScriptEngine engine) throws Exception {
+        Object func = engine.get("getContentSize");
+        if (func != null) {
+          engine.put("__printContext__",
+            new XPrintContextImpl(XScript.this, null) );
+          size[0] = ((Number)engine.eval("getContentSize(__printContext__)[0]") ).doubleValue();
+          size[1] = ((Number)engine.eval("getContentSize(__printContext__)[1]") ).doubleValue();
+        }
+      }
+    });
 
-		return;
-    }
+    return new Size2D(size[0], size[1]);
+  }
 
-    private Dimension2D createContentSize(XNodeContext context) {
+  private XGraphicsPlayer createPlayer(XNodeContext context) {
 
-        final double[] size = new double[2];
+    final XGraphicsPlayer player = new XGraphicsPlayer();
 
-        execSrc(context, new PostExecute() {
-			
-			public void execute(ScriptEngine engine)
-			throws Exception {
+    execSrc(context, new PostExecute() {
+      public void execute(ScriptEngine engine) throws Exception {
+        Object func = engine.get("paint");
+        if (func != null) {
+          engine.put("__printContext__", new XPrintContextImpl(
+            XScript.this, player.getGraphics() ) );
+          engine.eval("paint(__printContext__)");
+        }
+      }
+    });
 
-				Object func = engine.get("getContentSize");
-
-		        if (func != null) {
-		        	engine.put("__printContext__",
-		        		new XPrintContextImpl(XScript.this, null) );
-		        	size[0] = ((Number)engine.eval("getContentSize(__printContext__)[0]") ).doubleValue();
-		        	size[1] = ((Number)engine.eval("getContentSize(__printContext__)[1]") ).doubleValue();
-		        }
-			}
-		});
-
-        return new Size2D(size[0], size[1]);
-    }
-
-    private XGraphicsPlayer createPlayer(XNodeContext context) {
-    	
-    	final XGraphicsPlayer player = new XGraphicsPlayer();
-    	
-    	execSrc(context, new PostExecute() {
-			
-			public void execute(ScriptEngine engine)
-			throws Exception {
-
-				Object func = engine.get("paint");
-	            
-		        if (func != null) {
-		        	engine.put("__printContext__", new XPrintContextImpl(
-		        		XScript.this, player.getGraphics() ) );
-		        	engine.eval("paint(__printContext__)");
-		        }
-			}
-		});
-
-        return player;
-    }
+    return player;
+  }
 
   private ScriptEngine createScriptEngine() throws Exception {
     ScriptEngineManager manager = new ScriptEngineManager();
@@ -115,6 +107,7 @@ public class XScript extends XNode {
         context.getResourceAsStream(src), "Utf-8") );
       try {
         engine.put(ScriptEngine.FILENAME, src);
+        engine.put(NODE_CONTEXT, context);
         engine.eval(in);
         postExecute.execute(engine);
       } finally {
@@ -125,7 +118,7 @@ public class XScript extends XNode {
     }
   }
 
-    private static interface PostExecute {
-    	void execute(ScriptEngine engine) throws Exception;
-    }
+  private static interface PostExecute {
+    void execute(ScriptEngine engine) throws Exception;
+  }
 }
