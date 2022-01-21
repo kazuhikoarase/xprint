@@ -1,6 +1,7 @@
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
 
 sourceCompatibility = 1.6
 
@@ -39,12 +40,12 @@ task all {
   tasks.findByName('pageviewer').mustRunAfter 'jar'
 }
 
-uploadArchives {
-  repositories {
-    flatDir {
-      dirs 'repos'
+publishing {
+    repositories {
+        maven {
+            url = uri("${rootProject.projectDir}/maven-repo")
+        }
     }
-  }
 }
 
 repositories {
@@ -52,8 +53,8 @@ repositories {
 }
 
 dependencies {
-  compile 'javax.servlet:javax.servlet-api:3.0.1'
-  compile 'org.apache.xmlgraphics:batik-bridge:1.8'
-  compile files('lib/qrcode.jar')
-  testCompile 'junit:junit:4.12'
+  implementation 'javax.servlet:javax.servlet-api:3.0.1'
+  implementation 'org.apache.xmlgraphics:batik-bridge:1.8'
+  implementation files('lib/qrcode.jar')
+  testImplementation 'junit:junit:4.12'
 }
